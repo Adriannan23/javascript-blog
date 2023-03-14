@@ -8,7 +8,11 @@ const titleClickHandler = function(event){
     console.log('Link was clicked!');
     console.log(event);
     /* remove class 'active' from all article links  */
+    const activeArticles = document.querySelectorAll('.active');
 
+    for(let activeArticle of activeArticles){
+        activeArticle.classList.remove('active');
+    }
     /* add class 'active' to the clicked link */
 
     /* remove class 'active' from all articles */

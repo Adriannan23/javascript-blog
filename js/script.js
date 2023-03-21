@@ -47,7 +47,7 @@
 
 
 
-  const generateTitleLinks = function generateTitleLinks(customSelector = ''){
+  const generateTitleLinks = function (customSelector = ''){
 
     /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);

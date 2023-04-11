@@ -154,3 +154,25 @@ color:green;}
   color:coral;
  }
 
+ .authors{
+
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+ }
+ .author-size-1 {
+  font-size: 15px;
+  text-decoration: none;
+color:green;
+
+ }
+
+ .author-size-4 {
+  font-size: 25px;
+  text-decoration: none;
+color:red;
+
+ }
+
+

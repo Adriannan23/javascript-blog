@@ -1,6 +1,17 @@
 'use strict';
 {
-  const opts = {}
+  const templates = {
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+
+    tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+
+    authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
+
+    authorsCloudLink: Handlebars.compile(document.querySelector('#template-authors-cloud-link').innerHTML)
+  };
+
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
@@ -72,8 +83,9 @@
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
       /* create HTML of the link */
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-
+      // const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      const linkHTMLData = { id: articleId, title: articleTitle };
+      const linkHTML = templates.articleLink(linkHTMLData);
 
       /* insert link into titleList */
       // titleList.innerHTML = titleList.innerHTML + linkHTML;
@@ -121,7 +133,7 @@
 
     for (let author in authors) {
 
-      console.log(author + ' is used ' + authors[author] + ' times');
+      // console.log(author + ' is used ' + authors[author] + ' times');
       if (authors[author] > params.max) {
         params.max = authors[author];
         console.log(authors[author])
@@ -193,10 +205,17 @@
       for (let tag of articleTagsArray) {
 
         /* generate HTML of the link */
-        const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+        // const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+
+        const tagWithPrefix = 'tag-' + tag;
+        const tagHTMLData = {
+          id: tagWithPrefix, title: tag
+        };
+        const tagHTML = templates.tagLink(tagHTMLData);
+
 
         /* add generated code to html variable */
-        html = html + linkHTML + ' ';
+        html = html + tagHTML + ' ';
 
 
         /* [NEW] check if this link is NOT already in allTags */
@@ -320,6 +339,10 @@
       /* generate HTML of the link */
       const linkHTML = '<a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span></a>';
 
+      const authorWithPrefix = 'author-' + articleAuthor;
+
+      const authorHTMLData = { id: authorWithPrefix, title: articleAuthor };
+      const authorHTML = templates.authorLink(authorHTMLData);
       // const authorHTMLElement = 'author-' + articleAuthor;
 
 

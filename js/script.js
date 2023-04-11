@@ -337,7 +337,7 @@
       const articleAuthor = article.getAttribute('data-author');
 
       /* generate HTML of the link */
-      const linkHTML = '<a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span></a>';
+      // const linkHTML = '<a href="#author-' + articleAuthor + '"><span>' + articleAuthor + '</span></a>';
 
       const authorWithPrefix = 'author-' + articleAuthor;
 
@@ -348,8 +348,8 @@
 
 
       /* add generated code to html variable */
-      html = html + linkHTML;
-      console.log(linkHTML)
+      html = html + authorHTML;
+
 
       /* [NEW] check if this link is NOT already in allAuthors */
       if (!allAuthors[articleAuthor]) {
